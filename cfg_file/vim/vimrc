@@ -1,0 +1,50 @@
+set number
+set shiftwidth=4
+set smartindent
+set tabstop=4 
+set expandtab
+set cursorline
+colorscheme monokai-phoenix
+set hlsearch
+set cindent
+set smarttab
+set autoindent
+" set mouse=a
+set ttimeout ttimeoutlen=50 
+
+" Vundel
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'zivyangll/git-blame.vim'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'VundleVim/YouCompleteMe'
+Plugin 'itchyny/lightline.vim'
+Plugin 'jiangmiao/auto-pairs'
+
+call vundle#end()
+filetype plugin indent on
+
+" lightline
+set noshowmode
+set laststatus=2
+
+" git blame
+nnoremap <Leader>b :<C-u>call gitblame#echo()<CR>
+
+" git gutter
+let g:gitgutter_highlight_lines = 1
+let g:gitgutter_highlight_linenrs = 1
+let g:gitgutter_async = 0
+
+" YCM (You Complete Me)
+let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py'
+let g:ycm_confirm_extra_conf=0
+let g:ycm_seed_identifiers_with_syntax=1
+let g:ycm_min_num_of_chars_for_completion=1
+
+

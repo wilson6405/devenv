@@ -1,0 +1,124 @@
+#!/bin/bash                                                                                                                                                                  
+# Write in .bashrc
+# [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"  
+
+
+# This file note
+alias nt='cat ~/.config/aliasrc | less'
+
+# export
+## For color manual
+#export PAGER="less"
+
+
+
+# Command Managment
+alias c='clear'
+alias hi='history'
+alias hi1='history 10'
+alias hi2='history 20'
+alias hi3='history 30'
+alias py='python3'
+alias cs='cscope'
+alias ports='netstat -tulanp'
+alias plz='sudo '
+alias vi='nvim'
+alias sys='systemctl'
+alias ip='ip -c'
+alias bmcroom='ssh bmcroom'
+alias ptt='ssh bbsu@ptt.cc'
+
+# alias mini='minicom -D /dev/ttyUSB0'
+function mini() { 
+    minicom --color=on -D /dev/ttyUSB$1 
+} 
+
+# Directory Management
+alias ..='cd ..'
+alias ...='cd ../../..'
+alias ....='cd ../../../..'
+alias .....='cd ../../../../..'
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+alias lrt='ls -lrt'
+
+### Range short cut ###
+# select: space
+# copy:   F5
+# cut:    F6 / dd
+# remove: F8
+# paste:  pp
+# rename: A / a(skip ext.)
+## bookmark  
+# save:   m + <key> 
+# delete: um + <key>
+# choose: ` + <key>
+
+# File Management
+alias rg='ranger' \
+    mkd='mkdir -pv' \
+    rmr='rm -r'
+
+# Less Colors for Man Pages
+#export LESS_TERMCAP_mb=$'\E[01;31m'       # begin blinking
+#export LESS_TERMCAP_md=$'\E[01;38;5;74m'  # begin bold
+#export LESS_TERMCAP_me=$'\E[0m'           # end mode
+#export LESS_TERMCAP_se=$'\E[0m'           # end standout-mode
+#export LESS_TERMCAP_so=$'\E[38;5;246m'    # begin standout-mode - info box
+#export LESS_TERMCAP_ue=$'\E[0m'           # end underline
+#export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
+
+## Extract archive
+function extract {
+    if [ -z "$1" ]; then
+        echo "Usage: extract <path/file_name>.<zip|rar|bz2|gz|tar|tbz2|tgz|Z|7z|xz|ex|tar.bz2|tar.gz|tar.xz>"
+    else
+        if [ -f $1 ] ; then
+            case $1 in
+                *.tar.bz2)   tar xvjf ./$1    ;;
+                *.tar.gz)    tar xvzf ./$1    ;;
+                *.tar.xz)    tar xvJf ./$1    ;;
+                *.lzma)      unlzma ./$1      ;;
+                *.bz2)       bunzip2 ./$1     ;;
+                *.rar)       unrar x -ad ./$1 ;;
+                *.gz)        gunzip ./$1      ;;
+                *.tar)       tar xvf ./$1     ;;
+                *.tbz2)      tar xvjf ./$1    ;;
+                *.tgz)       tar xvzf ./$1    ;;
+                *.zip)       unzip ./$1       ;;
+                *.Z)         uncompress ./$1  ;;
+                *.7z)        7z x ./$1        ;;
+                *.xz)        unxz ./$1        ;;
+                *.exe)       cabextract ./$1  ;;
+                *)           echo "extract: '$1' - unknown archive method" ;;
+            esac
+        else
+            echo "$1 - file does not exist"
+        fi
+    fi
+}
+
+## python argument autocomplete register
+# eval "$(register-python-argcomplete your_script)"
+
+
+# Git
+alias gk='gitk &' \
+    st='git status' \
+    cmt='git commit' \
+    cmts='git commit -s' \
+    lg='git log --date=local' \
+    lgme='lg --author=$(git config user.name)' \
+    co='git checkout' \
+    br='git branch' \
+    bra='git branch -a' \
+    ad='git add' \
+    adu='git add -u' \
+    adp='git add -p' \
+    adi='git add -i' \
+    pick='git cherry-pick' \
+    amend='git commit --amend' \
+    rb='git rebase' \
+    rbi='git rebase -i' \
+    tig='tig --branches'

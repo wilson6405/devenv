@@ -1,0 +1,34 @@
+{
+    "env": {
+        "linux_kernel_release": "4.15.5-041505"
+    },
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/usr/include",
+                "/usr/local/include",
+                "/usr/lib/gcc/x86_64-linux-gnu/7.5.0/include",
+                "/usr/src/linux-headers-${linux_kernel_release}/include",
+                "/usr/src/linux-headers-${linux_kernel_release}-generic/include",
+                "/usr/src/linux-headers-${linux_kernel_release}-generic/arch/x86/include",
+                "/usr/src/linux-headers-${linux_kernel_release}-generic/arch/x86/include/asm",
+                "/usr/src/linux-headers-${linux_kernel_release}-generic/arch/x86/include/generated",
+                "/usr/src/linux-headers-${linux_kernel_release}-generic/arch/x86/include/uapi"
+            ],
+            "defines": [
+                "__KERNEL__"
+            ],
+            "browse": {
+                "path": [],
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": ""
+            },
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c11",
+            "intelliSenseMode": "gcc-x64"
+        }
+    ],
+    "version": 4
+}
